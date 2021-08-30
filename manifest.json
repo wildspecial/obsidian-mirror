@@ -5,6 +5,6 @@
 	"minAppVersion": "0.9.12",
 	"description": "This plugins allows to sync the active open file among different Obsidian instances. Why? well, if you have multiple monitors and you want to use the local graph in a separate monitor, there is no chance to do it now. So  I had the idea to run multiple instances of Obsidian using the workaround via symbolinc links. This way the 2 instances are not in sync. This plugin closes the gap and syncs the active opened file among multiple Obsidian instances",
 	"author": "Francesco Pistillo",
-	"authorUrl": "https://obsidian.md/about",
+	"authorUrl": "https://github.com/wildspecial/obsidian-mirror",
 	"isDesktopOnly": false
 }
