@@ -37,8 +37,8 @@ This plugin is not (yet) available in the official plugin lists. I created a pul
 2) Copy the folder `obsidian-mirror` to the `plugin` folder of the main Obsidian's instance
 3) Copy the same folder `obsidian-mirror` to the `plugin` folder of the second Obsidian's instance
 4) Activate the plugin in both obsidian's instances
-5) Go in the settings of both Obsidian's instances
-6) Make sure you configure exactly the same info in both instance's
+5) Go to the settings of both Obsidian's instances
+6) Make sure you configure exactly the same info in both instances
 7) Put the **main** vault's name (Voult's name of the main Obsidian's instance)
 8) Chose a name for the file that the plugin will use to sync the workspaces
 
@@ -48,7 +48,7 @@ This plugin is not (yet) available in the official plugin lists. I created a pul
 
 
 ## Additional Info
-The fastes way that came in my mind in order to sync the opened file among different instances was to us a *temporary* file in the main Vault.
+The fastes way that came in my mind in order to sync the opened file among different instances was to use a *temporary* file in the main Vault.
 
 The main instance of Obsidina will write the active file path in the temporary file and the secondary instance will read that content and open the active file.
 
