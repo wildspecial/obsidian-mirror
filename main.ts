@@ -1,6 +1,6 @@
 import { App, Modal, Notice, Plugin, PluginSettingTab, Setting, TAbstractFile, TFile, Vault } from 'obsidian';
 import { fileURLToPath } from 'url';
-//test
+
 interface ObsidianMirrorSettings {
 	isMirror: boolean;
 	vault: string
@@ -9,7 +9,7 @@ interface ObsidianMirrorSettings {
 }
 
 const DEFAULT_SETTINGS: ObsidianMirrorSettings = {
-	isMirror: false, 
+	isMirror: false,
 	vault: "",
 	fileName: "ObsidianMirror.md",
 	fileNameGraph: "ObsidianMirror_graph.md"
@@ -19,7 +19,7 @@ export default class ObidianMirrorPlugin extends Plugin {
 	settings: ObsidianMirrorSettings;
 
 	openedByThisPlugin: boolean = false;
-	wroteByThisPlugin:boolean = false;
+	wroteByThisPlugin: boolean = false;
 	activeFile: TFile = this.app.workspace.getActiveFile();
 
 	async onload() {
@@ -27,11 +27,11 @@ export default class ObidianMirrorPlugin extends Plugin {
 
 		await this.loadSettings();
 
-		this.addRibbonIcon('dice', 'Sample Plugin', () => {
+		this.addRibbonIcon('dice', 'Obsidian Mirror', () => {
 			new Notice('This is a notice!');
 		});
 
-		this.addStatusBarItem().setText('Status Bar Text');
+		this.addStatusBarItem().setText('Obsidian Mirror');
 
 		this.addCommand({
 			id: 'open-sample-modal',
@@ -70,7 +70,7 @@ export default class ObidianMirrorPlugin extends Plugin {
 				return
 			}
 
-			this.lastFile(); 
+			this.lastFile();
 
 
 		})
@@ -97,32 +97,27 @@ export default class ObidianMirrorPlugin extends Plugin {
 				this.readActiveOpenedFile();
 			}
 		} else {
-			this.openedByThisPlugin = false; 
+			this.openedByThisPlugin = false;
 		}
 	}
 
 
-	 async lastFile() {
-		
+	async lastFile() {
+
 		this.activeFile = this.app.workspace.getActiveFile();
 
-		//if (this.wroteByThisPlugin) { 
-		//	this.watchFileAndWrite();
-		//} 
 		console.log("lastFile");
 
 		setTimeout(() => {
-			//this.wroteByThisPlugin = true;
 			this.watchFileAndWrite();
-		}, 800 );
-		
-	}
+		}, 800);
+
+	} 
 
 
 
 	async watchFileAndWrite() {
 
-		//this.wroteByThisPlugin = false;
 
 		var activeFile: TFile = this.activeFile;
 		var sideCarFile = !this.settings.isMirror ? this.app.vault.getFiles().filter(f => { return f.name == this.settings.fileName })[0] : this.app.vault.getFiles().filter(f => { return f.path == this.settings.vault + "/" + this.settings.fileNameGraph })[0];
@@ -136,15 +131,8 @@ export default class ObidianMirrorPlugin extends Plugin {
 		if (activeFile != null && activeFile != undefined) {
 			console.log(`this is active file ${activeFile.name}`);
 
-			//var fileNameToOpen = await (await this.app.vault.read(sideCarFile)).trim();
-			//var fileToOpen: TFile = this.app.vault.getFiles().filter(f => { return f.name == fileNameToOpen })[0];
-			//if (fileToOpen) {
-				//if (fileToOpen?.name != this.app.workspace.getActiveFile().name) {
-					await this.app.vault.modify(sideCarFile, activeFile.name);
-				//}
-			//} 
+			await this.app.vault.modify(sideCarFile, activeFile.name);
 
-			
 		}
 
 
